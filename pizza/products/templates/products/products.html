@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>
+    Добро пожаловать в пицерию
+</h1>
+<table>
+<tr>
+    <th>Name</th>
+    <th> Description</th>
+    <th>Categoty</th>
+    <th>Price</th>
+    <th>Size</th>
+</tr>
+
+{% for product in products %}
+    <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.size }}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
