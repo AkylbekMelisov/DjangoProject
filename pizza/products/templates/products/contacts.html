@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    {% for contact in contacts %}
+    <div class="col-md-3 col-md-3 col-md-3">
+        <span class="font-weight-semibold">{{contact.address}}</span>
+        <span class="font-weight-semibold">{{ contact.phone }}</span>
+        <span class="font-weight-semibold">{{ contact.time }}</span>
+        <span class="font-weight-semibold">{{ contact.mng_name }}</span>
+
+
+    </div>
+</div>
+
+<!--    {{contact.address}}-->
+<!--    {{contact.phone}}-->
+<!--    {{contact.time}}-->
+<!--    {{contact.mng_name}}-->
+
+{%endfor%}
+</body>
+</html>

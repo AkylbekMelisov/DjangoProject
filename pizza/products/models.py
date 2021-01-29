@@ -11,6 +11,7 @@ class Product(models.Model):
         ('middle','middle'),
         ('great','great')
     )
+    image = models.ImageField(blank=True,null=True)
     name = models.CharField(max_length=40)
     category = models.CharField(max_length=40,choices=categories)
     description = models.TextField(blank=True,null=True)
@@ -21,3 +22,10 @@ class Product(models.Model):
 class AboutUs(models.Model):
     title = models.CharField(max_length=20)
     description = models.TextField(blank=True,null=True)
+
+
+class Contacts(models.Model):
+    address = models.CharField(max_length=40)
+    phone = models.IntegerField()
+    time = models.CharField(max_length=20)
+    mng_name = models.CharField(max_length=40)
