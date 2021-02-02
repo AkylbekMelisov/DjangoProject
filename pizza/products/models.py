@@ -11,21 +11,38 @@ class Product(models.Model):
         ('middle','middle'),
         ('great','great')
     )
-    image = models.ImageField(blank=True,null=True)
-    name = models.CharField(max_length=40)
-    category = models.CharField(max_length=40,choices=categories)
-    description = models.TextField(blank=True,null=True)
-    price = models.FloatField()
-    size = models.CharField(choices=sizes,max_length=50)
+    image = models.ImageField(blank=True,null=True,verbose_name='Картинки')
+    name = models.CharField(max_length=40,verbose_name='Название',unique=True)
+    category = models.CharField(max_length=40,choices=categories,verbose_name='Категория')
+    description = models.TextField(blank=True,null=True,verbose_name='Описание')
+    price = models.FloatField(verbose_name='Стоимость')
+    size = models.CharField(choices=sizes,max_length=50,verbose_name='Размер')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Продукт'
+        verbose_name_plural = 'Продукты'
 
 
 class AboutUs(models.Model):
-    title = models.CharField(max_length=20)
-    description = models.TextField(blank=True,null=True)
+    title = models.CharField(max_length=20,verbose_name='Название')
+    description = models.TextField(blank=True,null=True,verbose_name='Описание')
+
+
+    class Meta:
+        verbose_name = 'О нас!'
+        verbose_name_plural = 'О нас!'
 
 
 class Contacts(models.Model):
-    address = models.CharField(max_length=40)
-    phone = models.IntegerField()
-    time = models.CharField(max_length=20)
-    mng_name = models.CharField(max_length=40)
+    address = models.CharField(max_length=40,verbose_name='Адрес')
+    phone = models.IntegerField(verbose_name='Телефон')
+    time = models.CharField(max_length=20,verbose_name='Время')
+    mng_name = models.CharField(max_length=40,verbose_name='Имя менеджера')
+
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Product,AboutUs,Contacts
-from .forms import register_forms
+from .forms import *
 
 # Create your views here.
 
@@ -20,6 +20,10 @@ def contact_page(request):
 
 
 def register_page(request):
-    form = register_forms
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
     context = {"form":form}
     return render(request,'products/register.html',context)
