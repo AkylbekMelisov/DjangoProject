@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from .models import Product,AboutUs,Contacts
 from .forms import *
+
 
 # Create your views here.
 
@@ -27,3 +29,8 @@ def register_page(request):
             form.save()
     context = {"form":form}
     return render(request,'products/register.html',context)
+
+def user_page(request):
+    user = User.objects.all()
+    context = {"user":user}
+    return render(request,'products/users.html',context)

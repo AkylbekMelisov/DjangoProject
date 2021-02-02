@@ -46,3 +46,19 @@ class Contacts(models.Model):
     class Meta:
         verbose_name = 'Контакт'
         verbose_name_plural = 'Контакты'
+
+
+class Order(models.Model):
+    statuses = (
+        ('pending','pending'),
+        ('in_process','in_process'),
+        ('delivered','delivered'),
+        ('not_delivered','not_delivered')
+    )
+    status = models.CharField(max_length=50,choices=statuses,default='in_process',verbose_name='Статус')
+    date = models.DateTimeField(auto_now_add=True,verbose_name='Дата')
+    product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+
+    class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы'
