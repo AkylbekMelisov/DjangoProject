@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Product,AboutUs,Contacts
 from .forms import *
 
@@ -42,6 +42,7 @@ def create_order(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('home')
     context = {"form":form}
     return render(request,'products/create_order.html',context)
 
