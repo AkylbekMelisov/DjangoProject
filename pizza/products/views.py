@@ -32,5 +32,14 @@ def register_page(request):
 
 def user_page(request):
     user = User.objects.all()
-    context = {"user":user}
+    context = {"users":user}
     return render(request,'products/users.html',context)
+
+def create_order(request):
+    form = OrderForm()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {"form":form}
+    return render(request,'products/create_order.html',context)
