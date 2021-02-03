@@ -4,6 +4,7 @@ from .models import Product,AboutUs,Contacts
 from .forms import *
 
 
+
 # Create your views here.
 
 def homepage(request):
@@ -39,6 +40,16 @@ def create_order(request):
     form = OrderForm()
     if request.method == 'POST':
         form = OrderForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {"form":form}
+    return render(request,'products/create_order.html',context)
+
+def update_order(request,order_id):
+    order = Order.objects.get(id=order_id)
+    form = OrderForm(instance=order)
+    if request.method == 'POST':
+        form = OrderForm(request.POST,instance=order)
         if form.is_valid():
             form.save()
     context = {"form":form}
