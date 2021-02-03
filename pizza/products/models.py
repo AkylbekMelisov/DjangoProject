@@ -60,8 +60,6 @@ class Order(models.Model):
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True,verbose_name='Продукты')
     quantity = models.IntegerField(verbose_name='Количество')
 
-    def __str__(self):
-        return self.status
 
     class Meta:
         verbose_name = 'Заказ'

@@ -55,3 +55,12 @@ def update_order(request,order_id):
             form.save()
     context = {"form":form}
     return render(request,'products/create_order.html',context)
+
+
+def delete_order(request,order_id):
+    order = Order.objects.get(id=order_id)
+    if request.method == 'POST':
+        order.delete()
+        return redirect('home')
+    context = {'order':order}
+    return render(request,'products/delete.html',context)
