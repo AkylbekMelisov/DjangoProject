@@ -58,6 +58,7 @@ class Order(models.Model):
     status = models.CharField(max_length=50,choices=statuses,default='in_process',verbose_name='Статус')
     date = models.DateTimeField(auto_now_add=True,verbose_name='Дата')
     product = models.ForeignKey(Product,on_delete=models.SET_NULL,null=True)
+    quantity = models.IntegerField()
 
     class Meta:
         verbose_name = 'Заказ'
