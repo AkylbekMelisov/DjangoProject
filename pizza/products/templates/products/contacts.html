@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'products/base.html' %}
+{% block content %}
 <div class="row">
     {% for contact in contacts %}
     <div class="col-md-3 col-md-3 col-md-3">
@@ -17,11 +12,5 @@
     </div>
 </div>
 
-<!--    {{contact.address}}-->
-<!--    {{contact.phone}}-->
-<!--    {{contact.time}}-->
-<!--    {{contact.mng_name}}-->
-
 {%endfor%}
-</body>
-</html>
+{% endblock %}
