@@ -18,3 +18,12 @@ if r.index(max(r)) > r.index(min(r)):
     print(r.index(max(r)) - (r.index(min(r))))
 else:
     print((r.index(min(r))) - (r.index(max(r))))
+
+
+vip_clients = []
+potential_vip = ''
+for customer in customers:
+    if customer == potential_vip:
+        vip_clients.append(customer)
+    potential_vip = customer
+print(vip_clients)
