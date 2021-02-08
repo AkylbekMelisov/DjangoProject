@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .models import Product,AboutUs,Contacts
@@ -28,6 +29,7 @@ def register_page(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('home')
     context = {"form":form}
     return render(request,'products/register.html',context)
 
@@ -36,14 +38,16 @@ def user_page(request):
     context = {"users":user}
     return render(request,'products/users.html',context)
 
-def create_order(request):
-    form = OrderForm()
+def create_order(request,product_id):
+    product = Product.objects.get(id=product_id)
+    total_price = 0
+    form = OrderForm(initial={'product':product})
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
+            total_price = product.price * form.cleaned_data['quantity']
             form.save()
-            return redirect('home')
-    context = {"form":form}
+    context = {"form":form,'total_price':total_price}
     return render(request,'products/create_order.html',context)
 
 def update_order(request,order_id):
@@ -53,6 +57,7 @@ def update_order(request,order_id):
         form = OrderForm(request.POST,instance=order)
         if form.is_valid():
             form.save()
+            return redirect('home')
     context = {"form":form}
     return render(request,'products/create_order.html',context)
 
@@ -64,3 +69,12 @@ def delete_order(request,order_id):
         return redirect('home')
     context = {'order':order}
     return render(request,'products/delete.html',context)
+
+
+def sign_in(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request,username=username,password=password)
+        login(request,user)
+    return render(request,'products/login.html')

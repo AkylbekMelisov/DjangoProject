@@ -11,7 +11,7 @@ class Product(models.Model):
         ('middle','middle'),
         ('great','great')
     )
-    image = models.ImageField(blank=True,null=True,verbose_name='Картинки')
+    image = models.ImageField(blank=True,null=True,verbose_name='Картинки',default='pizza_default.jpg')
     name = models.CharField(max_length=40,verbose_name='Название',unique=True)
     category = models.CharField(max_length=40,choices=categories,verbose_name='Категория')
     description = models.TextField(blank=True,null=True,verbose_name='Описание')

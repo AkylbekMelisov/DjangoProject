@@ -2,8 +2,8 @@
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}
-    {{ form}}
+    {{ form }}
     <input type="submit" name="Submit">
-
+    {{ total_price }}
 </form>
 {% endblock %}
