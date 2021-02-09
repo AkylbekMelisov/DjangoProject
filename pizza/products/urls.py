@@ -10,5 +10,6 @@ urlpatterns = [
     path('create_order/<int:product_id>/',create_order,name='create_order'),
     path('update_order/<int:order_id>/',update_order),
     path('delete_order/<int:order_id>/',delete_order),
-    path('sign_in/',sign_in,name='login')
+    path('sign_in/',sign_in,name='login'),
+    path('logout/',logout_page,name='logout')
 ]

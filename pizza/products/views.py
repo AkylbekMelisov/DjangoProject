@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .models import Product,AboutUs,Contacts
@@ -79,3 +79,7 @@ def sign_in(request):
         login(request,user)
         return redirect('home')
     return render(request,'products/login.html')
+
+def logout_page(request):
+    logout(request)
+    return redirect('home')
