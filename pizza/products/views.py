@@ -77,4 +77,5 @@ def sign_in(request):
         password = request.POST.get('password')
         user = authenticate(request,username=username,password=password)
         login(request,user)
+        return redirect('home')
     return render(request,'products/login.html')
