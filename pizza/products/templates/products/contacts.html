@@ -1,16 +1,48 @@
-{% extends 'products/base.html' %}
-{% block content %}
-<div class="row">
-    {% for contact in contacts %}
-    <div class="col-md-3 col-md-3 col-md-3">
-        <span class="font-weight-semibold">{{contact.address}}</span>
-        <span class="font-weight-semibold">{{ contact.phone }}</span>
-        <span class="font-weight-semibold">{{ contact.time }}</span>
-        <span class="font-weight-semibold">{{ contact.mng_name }}</span>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+<a href="http://bootsnipp.com/mouse0270/snippets/4l0k2" class="btn btn-danger hide" id="back-to-bootsnipp">Back to Bootsnipp</a>
 
-    </div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-offset-3 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading c-list">
+                    <span class="title">Контакты</span>
+                </div>
+                
+                <div class="row" style="display: none;">
+                    <div class="col-xs-12">
+                        <div class="input-group c-search">
+                            <input type="text" class="form-control" id="contact-list-search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search text-muted"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <ul class="list-group" id="contact-list">
+                    {% for contact in contacts %}
+                    <li class="list-group-item">
+                        <div class="col-xs-12 col-sm-3">
+                            <img src="{{ contact.image.url }}" class="img-responsive img-circle">
+                        </div>
+                        <div class="col-xs-12 col-sm-9">
+                            <span class="name">{{ contact.mng_name }}</span><br/>
+                            <span>{{ contact.address }}</span><br>
+                            <a href="#">{{ contact.phone}}</a><br>
+                        </div>
+                        <div class="clearfix"></div>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+	</div>
+
 </div>
-
-{%endfor%}
-{% endblock %}
