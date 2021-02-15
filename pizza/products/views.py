@@ -59,11 +59,6 @@ def register_page(request):
     context = {"form":form}
     return render(request,'products/register.html',context)
 
-def user_page(request):
-    user = Profile.objects.get(user=request.user)
-    context = {"users":user}
-    return render(request,'products/users.html',context)
-
 def create_order(request,product_id):
     user1 = Profile.objects.get(user=request.user)
     product = Product.objects.get(id=product_id)
